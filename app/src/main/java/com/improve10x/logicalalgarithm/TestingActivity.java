@@ -27,21 +27,21 @@ public class TestingActivity extends AppCompatActivity {
 
     private void handlesumBtn() {
         sumBtn.setOnClickListener(view -> {
+              resultTxt.setText("");
              int progress1 = aSb.getProgress();
              int progress2 = bSb.getProgress();
-             int progress = sumIsLessThan100(progress1,progress2);
+             String progress = sumIsLessThan100(progress1,progress2);
              resultTxt.setText(progress);
 
         });
     }
 
-    private int sumIsLessThan100(int progress1, int progress2) {
-
+    private String sumIsLessThan100(int progress1, int progress2) {
         boolean result = false;
         if (progress1 + progress2<100){
             result = true;
         }
-        return result ;
+        return result + "" ;
 
     }
 
@@ -52,4 +52,11 @@ public class TestingActivity extends AppCompatActivity {
         resultTxt = findViewById(R.id.result_txt);
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        aSb.setProgress(0);
+        bSb.setProgress(0);
+        resultTxt.setText("");
+    }
 }
