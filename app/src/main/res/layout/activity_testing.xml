@@ -10,16 +10,18 @@
     android:textAlignment="center"
     tools:context=".TestingActivity">
 
-    <EditText
-        android:id="@+id/a_txt"
+    <SeekBar
+        android:id="@+id/a_sb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:inputType="number" />
 
-    <EditText
-        android:id="@+id/b_txt"
+    <SeekBar
+        android:id="@+id/b_sb"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:ems="10"
         android:inputType="number" />
 

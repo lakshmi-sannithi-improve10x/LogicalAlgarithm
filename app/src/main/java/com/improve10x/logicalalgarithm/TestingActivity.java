@@ -4,14 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.provider.Telephony;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 public class TestingActivity extends AppCompatActivity {
     Button sumBtn;
-    EditText aTxt;
-    EditText bTxt;
+    SeekBar aSb;
+    SeekBar bSb;
     TextView resultTxt;
 
     @Override
@@ -25,28 +27,28 @@ public class TestingActivity extends AppCompatActivity {
 
     private void handlesumBtn() {
         sumBtn.setOnClickListener(view -> {
-            String input1 = aTxt.getText().toString();
-            String input2 = bTxt.getText().toString();
-            String result = sumIsLessThan100(input1,input2);
-            resultTxt.setText(result);
+             int progress1 = aSb.getProgress();
+             int progress2 = bSb.getProgress();
+             int progress = sumIsLessThan100(progress1,progress2);
+             resultTxt.setText(progress);
+
         });
     }
 
-    private String sumIsLessThan100(String input1, String input2) {
-        int a = Integer.parseInt(input1);
-        int b = Integer.parseInt(input2);
+    private int sumIsLessThan100(int progress1, int progress2) {
+
         boolean result = false;
-        if (a + b<100){
+        if (progress1 + progress2<100){
             result = true;
         }
-        return result + "";
+        return result ;
 
     }
 
     public void handleInItViews(){
         sumBtn = findViewById(R.id.sum_btn);
-        aTxt = findViewById(R.id.a_txt);
-        bTxt = findViewById(R.id.b_txt);
+        aSb = findViewById(R.id.a_sb);
+        bSb = findViewById(R.id.b_sb);
         resultTxt = findViewById(R.id.result_txt);
     }
 
